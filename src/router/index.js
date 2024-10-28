@@ -1,20 +1,30 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import Home from "@/views/Home.vue";
+import Projects from "@/views/Projects.vue";
+import About from "@/views/About.vue";
 
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: HomeView,
+    name: "Home",
+    component: Home,
   },
   {
     path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    name: "About",
+    component: About,
+    meta: { transition: "slide-right" },
+  },
+  {
+    path: "/projects",
+    name: "Projects",
+    component: Projects,
+    meta: { transition: "slide-left" },
+  },
+  // Catch all 404 - define a 404 page component if you want to show a custom 404 page
+  {
+    path: "/:pathMatch(.*)*",
+    redirect: "/",
   },
 ];
 
